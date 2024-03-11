@@ -1,13 +1,13 @@
-defmodule PhoenixApp.Services.Users.CreateService do
+defmodule PhoenixApp.Users do
   @moduledoc """
   Create Users.
   """
 
   import Ecto.Query, warn: false
   alias PhoenixApp.Repo
-  alias PhoenixApp.User
+  alias PhoenixApp.Users.User
 
-  def exec(attrs \\ %{}) do
+  def create_user(attrs \\ %{}) do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()

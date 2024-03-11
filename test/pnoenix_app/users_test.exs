@@ -1,7 +1,7 @@
-defmodule PhoenixApp.Services.Users.CreateServiceTest do
+defmodule PhoenixApp.CreateUsersTest do
   use ExUnit.Case
-  alias PhoenixApp.User
-  alias PhoenixApp.Services.Users.CreateService
+  alias PhoenixApp.Users.User
+  alias PhoenixApp.Users
   alias PhoenixApp.Repo
   alias Ecto.Changeset
 
@@ -9,7 +9,7 @@ defmodule PhoenixApp.Services.Users.CreateServiceTest do
     Ecto.Adapters.SQL.Sandbox.checkout(Repo)
   end
 
-  describe "exes" do
+  describe "create_user" do
     test "stores a valid user in DB" do
       attrs = %{
         name: "Matroskin",
@@ -17,7 +17,7 @@ defmodule PhoenixApp.Services.Users.CreateServiceTest do
         bio: "unbelievable"
       }
 
-      {:ok, %User{} = created_user} = CreateService.exec(attrs)
+      {:ok, %User{} = created_user} = Users.create_user(attrs)
 
       stored_user = Repo.get(User, created_user.id)
 
@@ -30,7 +30,7 @@ defmodule PhoenixApp.Services.Users.CreateServiceTest do
         {:email, {"can't be blank", [validation: :required]}}
       ]
 
-      assert {:error, %Changeset{valid?: false, errors: ^errors}} = CreateService.exec(%{})
+      assert {:error, %Changeset{valid?: false, errors: ^errors}} = Users.create_user(%{})
     end
   end
 end
