@@ -1,6 +1,6 @@
 defmodule PhoenixApp.Users.UserTest do
   use ExUnit.Case
-  alias PhoenixApp.Users.User
+  alias PhoenixApp.User
 
   describe "db fields" do
     test "it contains expected fields" do

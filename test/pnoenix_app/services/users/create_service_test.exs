@@ -1,7 +1,7 @@
-defmodule PhoenixApp.Users.CreateTest do
+defmodule PhoenixApp.Services.Users.CreateServiceTest do
   use ExUnit.Case
-  alias PhoenixApp.Users.User
-  alias PhoenixApp.Users.Create
+  alias PhoenixApp.User
+  alias PhoenixApp.Services.Users.CreateService
   alias PhoenixApp.Repo
   alias Ecto.Changeset
 
@@ -17,7 +17,7 @@ defmodule PhoenixApp.Users.CreateTest do
         bio: "unbelievable"
       }
 
-      {:ok, %User{} = created_user} = Create.exec(attrs)
+      {:ok, %User{} = created_user} = CreateService.exec(attrs)
 
       stored_user = Repo.get(User, created_user.id)
 
@@ -30,7 +30,7 @@ defmodule PhoenixApp.Users.CreateTest do
         {:email, {"can't be blank", [validation: :required]}}
       ]
 
-      assert {:error, %Changeset{valid?: false, errors: ^errors}} = Create.exec(%{})
+      assert {:error, %Changeset{valid?: false, errors: ^errors}} = CreateService.exec(%{})
     end
   end
 end

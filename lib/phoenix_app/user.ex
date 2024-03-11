@@ -1,4 +1,4 @@
-defmodule PhoenixApp.Users.User do
+defmodule PhoenixApp.User do
   use Ecto.Schema
   import Ecto.Changeset
 
