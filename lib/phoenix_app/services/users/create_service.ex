@@ -13,7 +13,7 @@ defmodule PhoenixApp.Services.Users.CreateService do
 
   @timeout 5000
 
-  def start_link() do
+  def start_link do
     GenServer.start_link(__MODULE__, [])
   end
 
